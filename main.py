@@ -1,7 +1,7 @@
 import requests, json, time, os, datetime
 from livestreamer import Livestreamer
 
-model = 'Jaxson'#enter model name
+model = ''#enter model name
 
 def get_data(model):
 	headers = {
@@ -24,7 +24,7 @@ def stream(videoServerUrl, model):
 
 	now = datetime.datetime.now()
 	filePath = '%s/%s.mp4' % (model, model+now.strftime('%Y-%m-%d-%H-%M'))
-	print(filePath)
+	print(' - Start record stream')
 	if not os.path.exists(model):
 		os.makedirs(model)
 	with open(filePath, 'wb') as f:
@@ -33,7 +33,7 @@ def stream(videoServerUrl, model):
 				data = fd.read(1024)
 				f.write(data)
 			except:
-				print('Error write')
+				print(' - Error write record into file')
 				f.close()
 				return
 
@@ -42,4 +42,4 @@ if __name__ == '__main__':
 	if 'videoServerUrl' in data['localData']:
 		stream(data['localData']['videoServerUrl'], model)
 	else:
-		print('This model just now offline')
+		print(' - This model just now offline')
