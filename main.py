@@ -1,7 +1,7 @@
 import requests, json, time, os, datetime
 from livestreamer import Livestreamer
 
-model = ''#enter model name
+model = 'Jaxson'#enter model name
 
 def get_data(model):
 	headers = {
@@ -39,8 +39,7 @@ def stream(videoServerUrl, model):
 
 if __name__ == '__main__':
 	data = get_data(model)
-
-	if data['localData']['videoServerUrl']:
+	if 'videoServerUrl' in data['localData']:
 		stream(data['localData']['videoServerUrl'], model)
 	else:
 		print('This model just now offline')
