@@ -9,12 +9,12 @@ def get_data(model):
 		'X-Requested-With': 'XMLHttpRequest',
 	}
 	data = [('method', 'getRoomData'), ('args[]', model)]
-	r = requests.post('https://ru.bongacams.com/tools/amf.php', headers=headers, data=data)
+	r = requests.post('https://bongacams.com/tools/amf.php', headers=headers, data=data)
 	return json.loads(r.text)
 
 def stream(videoServerUrl, model):
 	session = Livestreamer()
-	session.set_option('http-headers', 'referer=https://ru.bongacams.com/%s' % model)
+	session.set_option('http-headers', 'referer=https://bongacams.com/%s' % model)
 
 	url = 'hlsvariant://https:%s/hls/stream_%s/playlist.m3u8' % (videoServerUrl, model)
 
