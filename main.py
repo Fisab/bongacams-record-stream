@@ -1,7 +1,7 @@
 import requests, json, time, os, datetime
 from livestreamer import Livestreamer
 
-model = 'DONTKILLMVIBE'#enter model name
+model = 'AlexyaWonder'#enter model name
 
 def get_data(model):
 	headers = {
